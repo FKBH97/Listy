@@ -1,126 +1,128 @@
 import Foundation
 import CoreData
 
-enum DetailListViewModelError: Error {
-    case fetchFailed
-    case saveFailed
-    case invalidItem
-    case unknown(String)
-}
-
 class DetailListViewModel: ObservableObject {
     @Published var items: [ListItem] = []
-    @Published var isLoading = false
     @Published var error: DetailListViewModelError?
-    
-    private let list: CustomList
-    private let viewContext: NSManagedObjectContext
+    @Published var isLoading: Bool = false
 
-    init(list: CustomList) {
+    private let list: CustomList
+    private let context: NSManagedObjectContext
+
+    init(list: CustomList, context: NSManagedObjectContext = PersistenceController.shared.container.viewContext) {
         self.list = list
-        self.viewContext = list.managedObjectContext!
-        fetchItems()
+        self.context = context
+        fetchItems() // Fetch items on initialization
     }
 
-    // Fetch items associated with the list
     func fetchItems() {
         isLoading = true
         let request: NSFetchRequest<ListItem> = ListItem.fetchRequest()
         request.predicate = NSPredicate(format: "customList == %@", list)
-        request.sortDescriptors = [NSSortDescriptor(keyPath: \ListItem.order, ascending: true)]
 
         do {
-            items = try viewContext.fetch(request)
+            items = try context.fetch(request)
             isLoading = false
         } catch {
             isLoading = false
-            self.error = .fetchFailed
-            print("Error fetching items: \(error)")
+            self.error = .fetchFailed(error.localizedDescription)
         }
     }
 
-    // Add a new item to the list
-    func addItem(_ text: String) throws {
-        guard !text.isEmpty else {
-            throw DetailListViewModelError.invalidItem
+    func addItem(text: String) {
+        isLoading = true
+        do {
+            let newItem = ListItem(context: context)
+            newItem.text = text
+            newItem.customList = list
+            newItem.order = Int16(items.count)
+
+            items.append(newItem)
+            try context.save()
+            fetchItems() // Refetch items to ensure view updates properly
+            isLoading = false
+        } catch {
+            isLoading = false
+            self.error = .saveFailed(error.localizedDescription)
         }
-        
-        let newItem = ListItem(context: viewContext)
-        newItem.id = UUID()
-        newItem.text = text
-        newItem.isChecked = false
-        newItem.order = Int16(items.count)
-        newItem.customList = list
-
-        try saveContext()
-        fetchItems()
     }
 
-    // Delete an individual item
-    func deleteItem(_ item: ListItem) throws {
-        viewContext.delete(item)
-        try saveContext()
-        fetchItems()
-    }
-
-    // Delete items at specified offsets
-    func deleteItems(at offsets: IndexSet) throws {
-        offsets.map { items[$0] }.forEach(viewContext.delete)
-        try saveContext()
-        fetchItems()
-    }
-
-    // Move items from source indices to destination index
-    func moveItems(from source: IndexSet, to destination: Int) throws {
-        var revisedItems = items
-        revisedItems.move(fromOffsets: source, toOffset: destination)
-        for (index, item) in revisedItems.enumerated() {
-            item.order = Int16(index)
-        }
-        try saveContext()
-        fetchItems()
-    }
-
-    // Save changes to Core Data context
-    func saveContext() throws {
-        if viewContext.hasChanges {
-            do {
-                try viewContext.save()
-            } catch {
-                throw DetailListViewModelError.saveFailed
+    func toggleItemCheck(_ item: ListItem) {
+        isLoading = true
+        do {
+            if let taskItem = item as? TaskItem {
+                taskItem.isCompleted.toggle()
+                try context.save()
             }
+            fetchItems() // Refetch after state change
+            isLoading = false
+        } catch {
+            isLoading = false
+            self.error = .saveFailed(error.localizedDescription)
         }
     }
 
-    // Toggle the checked status of an item
-    func toggleItemCheck(_ item: ListItem) throws {
-        item.isChecked.toggle()
-        try saveContext()
-        fetchItems()
-    }
-
-    // Update the text of an item
-    func updateItemText(_ item: ListItem, newText: String) throws {
-        guard !newText.isEmpty else {
-            throw DetailListViewModelError.invalidItem
+    func deleteItems(at offsets: IndexSet) {
+        isLoading = true
+        do {
+            offsets.map { items[$0] }.forEach(context.delete)
+            items.remove(atOffsets: offsets)
+            try context.save()
+            fetchItems() // Refetch after deletion
+            isLoading = false
+        } catch {
+            isLoading = false
+            self.error = .deleteFailed(error.localizedDescription)
         }
-        
-        item.text = newText
-        try saveContext()
-        fetchItems()
     }
 
-    // Delete all items in the list
-    func deleteAllItems() throws {
-        items.forEach(viewContext.delete)
-        try saveContext()
-        fetchItems()
+    func moveItems(from source: IndexSet, to destination: Int) {
+        isLoading = true
+        do {
+            items.move(fromOffsets: source, toOffset: destination)
+            for (index, item) in items.enumerated() {
+                item.order = Int16(index)
+            }
+            try context.save()
+            fetchItems() // Refetch after reordering
+            isLoading = false
+        } catch {
+            isLoading = false
+            self.error = .saveFailed(error.localizedDescription)
+        }
     }
-    
-    // Mark all items as checked or unchecked
-    func markAllItems(checked: Bool) throws {
-        items.forEach { $0.isChecked = checked }
-        try saveContext()
-        fetchItems()
+
+    func updateItemText(_ item: ListItem, newText: String) {
+        isLoading = true
+        do {
+            item.text = newText
+            try context.save()
+            fetchItems() // Refetch after update
+            isLoading = false
+        } catch {
+            isLoading = false
+            self.error = .saveFailed(error.localizedDescription)
+        }
     }
 }
+
+enum DetailListViewModelError: Error {
+    case fetchFailed(String)
+    case saveFailed(String)
+    case deleteFailed(String)
+    case unknown(String)
+
+    var localizedDescription: String {
+        switch self {
+        case .fetchFailed(let message):
+            return "Failed to fetch items: \(message)"
+        case .saveFailed(let message):
+            return "Failed to save items: \(message)"
+        case .deleteFailed(let message):
+            return "Failed to delete items: \(message)"
+        case .unknown(let message):
+            return "An unknown error occurred: \(message)"
+        }
+    }
+}
+

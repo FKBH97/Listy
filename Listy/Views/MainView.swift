@@ -1,6 +1,5 @@
 import SwiftUI
-import CoreData  // <-- Make sure this is imported
-
+import CoreData
 
 struct MainView: View {
     @StateObject private var viewModel: MainViewModel
@@ -51,11 +50,5 @@ struct MainView: View {
 
     private func moveLists(from source: IndexSet, to destination: Int) {
         viewModel.moveLists(from: source, to: destination)
-    }
-}
-
-struct MainView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainView(viewContext: PersistenceController.preview.container.viewContext)
     }
 }

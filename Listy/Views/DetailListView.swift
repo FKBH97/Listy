@@ -6,7 +6,6 @@ struct DetailListView: View {
     @StateObject private var viewModel: DetailListViewModel
     @State private var showingAddItem = false
     @State private var showingError = false
-    @State private var editingItem: ListItem?
 
     init(list: CustomList) {
         self.list = list
@@ -17,20 +16,17 @@ struct DetailListView: View {
         ZStack {
             List {
                 ForEach(viewModel.items, id: \.self) { item in
-                    if list.wrappedCategory == .tasks {
-                        Button(action: {
-                            toggleItemCheck(item)
-                        }) {
-                            HStack {
-                                Image(systemName: item.isChecked ? "checkmark.square" : "square")
-                                Text(item.wrappedText)
-                            }
+                    if let quoteItem = item as? QuoteItem {
+                        NavigationLink(destination: DetailedQuoteView(quoteItem: quoteItem)) {
+                            Text("“\(quoteItem.text ?? "")”")
                         }
-                    } else {
-                        NavigationLink(destination: EditItemView(item: item) { newText in
-                            updateItemText(item, newText: newText)
-                        }) {
-                            Text(item.wrappedText)
+                    } else if let mediaItem = item as? MediaListItem {
+                        NavigationLink(destination: MediaDetailView(mediaItem: mediaItem)) {
+                            Text(mediaItem.text ?? "No title")
+                        }
+                    } else if let taskItem = item as? TaskItem {
+                        NavigationLink(destination: TaskDetailView(taskItem: taskItem)) {
+                            Text(taskItem.text ?? "No task name")
                         }
                     }
                 }
@@ -66,46 +62,18 @@ struct DetailListView: View {
         }
     }
 
-    private func toggleItemCheck(_ item: ListItem) {
-        do {
-            try viewModel.toggleItemCheck(item)
-        } catch {
-            showError(error)
-        }
-    }
-
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
-            do {
-                try viewModel.deleteItems(at: offsets)
-            } catch {
-                showError(error)
-            }
+            viewModel.deleteItems(at: offsets)
         }
     }
 
     private func moveItems(from source: IndexSet, to destination: Int) {
-        do {
-            try viewModel.moveItems(from: source, to: destination)
-        } catch {
-            showError(error)
-        }
+        viewModel.moveItems(from: source, to: destination)
     }
 
     private func addItem(_ text: String) {
-        do {
-            try viewModel.addItem(text)
-        } catch {
-            showError(error)
-        }
-    }
-
-    private func updateItemText(_ item: ListItem, newText: String) {
-        do {
-            try viewModel.updateItemText(item, newText: newText)
-        } catch {
-            showError(error)
-        }
+        viewModel.addItem(text: text)
     }
 
     private func showError(_ error: Error) {
@@ -114,11 +82,3 @@ struct DetailListView: View {
     }
 }
 
-struct DetailListView_Previews: PreviewProvider {
-    static var previews: some View {
-        let context = PersistenceController.preview.container.viewContext
-        let sampleList = CustomList(context: context)
-        sampleList.name = "Sample List"
-        return DetailListView(list: sampleList)
-    }
-}
