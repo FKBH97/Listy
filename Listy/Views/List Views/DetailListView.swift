@@ -60,7 +60,7 @@ struct DetailListView: View {
         switch item {
         case let quoteItem as QuoteItem:
             NavigationLink(destination: DetailedQuoteView(quoteItem: quoteItem)) {
-                Text("\"\(quoteItem.text ?? "")\"") // Adds quotation marks
+                Text("\"\(quoteItem.text ?? "")\"") // Adds quotation marks for quotes
             }
         case let mediaItem as MediaListItem:
             NavigationLink(destination: MediaDetailView(mediaItem: mediaItem)) {

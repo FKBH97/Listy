@@ -29,6 +29,9 @@
 		B13E31222C910463007BD28D /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13E31212C910463007BD28D /* TaskItem.swift */; };
 		B13E31242C910D0D007BD28D /* ListCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13E31232C910D0D007BD28D /* ListCategory.swift */; };
 		B1873AFD2C938B3A00C692A7 /* DetailListViewModelError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873AFC2C938B3A00C692A7 /* DetailListViewModelError.swift */; };
+		B1873B022C93A6D500C692A7 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B012C93A6D500C692A7 /* AppError.swift */; };
+		B1873B042C93A70200C692A7 /* EditableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B032C93A70200C692A7 /* EditableItem.swift */; };
+		B1873B062C93A72500C692A7 /* DetailQuoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B052C93A72500C692A7 /* DetailQuoteViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +58,9 @@
 		B13E31212C910463007BD28D /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
 		B13E31232C910D0D007BD28D /* ListCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCategory.swift; sourceTree = "<group>"; };
 		B1873AFC2C938B3A00C692A7 /* DetailListViewModelError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailListViewModelError.swift; sourceTree = "<group>"; };
+		B1873B012C93A6D500C692A7 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		B1873B032C93A70200C692A7 /* EditableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableItem.swift; sourceTree = "<group>"; };
+		B1873B052C93A72500C692A7 /* DetailQuoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailQuoteViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +93,7 @@
 		B13E30C82C80088B007BD28D /* Listy */ = {
 			isa = PBXGroup;
 			children = (
+				B1873B002C93A6BC00C692A7 /* Error Handling */,
 				B13E30EA2C80155F007BD28D /* Views */,
 				B13E30E52C80151C007BD28D /* ViewModels */,
 				B13E30DE2C8013F2007BD28D /* Models */,
@@ -110,12 +117,13 @@
 		B13E30DE2C8013F2007BD28D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				B13E30DF2C80140C007BD28D /* CustomList.swift */,
+				B13E31232C910D0D007BD28D /* ListCategory.swift */,
 				B13E30E12C801423007BD28D /* ListItem.swift */,
 				B13E311D2C91042A007BD28D /* QuoteItem.swift */,
+				B13E30DF2C80140C007BD28D /* CustomList.swift */,
 				B13E311F2C91044C007BD28D /* MediaListItem.swift */,
 				B13E31212C910463007BD28D /* TaskItem.swift */,
-				B13E31232C910D0D007BD28D /* ListCategory.swift */,
+				B1873B032C93A70200C692A7 /* EditableItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -126,6 +134,7 @@
 				B13E30E62C801530007BD28D /* MainViewModel.swift */,
 				B13E30E82C80154B007BD28D /* DetailListViewModel.swift */,
 				B1873AFC2C938B3A00C692A7 /* DetailListViewModelError.swift */,
+				B1873B052C93A72500C692A7 /* DetailQuoteViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -133,16 +142,40 @@
 		B13E30EA2C80155F007BD28D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B13E30EB2C80156C007BD28D /* MainView.swift */,
-				B13E30ED2C801589007BD28D /* DetailListView.swift */,
+				B1873AFE2C93A62700C692A7 /* List Views */,
+				B1873AFF2C93A64100C692A7 /* Detail Views */,
 				B13E30EF2C8015A0007BD28D /* AddListItemView.swift */,
 				B13E30F12C8016D6007BD28D /* EditItemView.swift */,
 				B13E30F32C801A70007BD28D /* AddListView.swift */,
-				B13E30FB2C8D2AA9007BD28D /* MediaDetailView.swift */,
-				B13E30FD2C8D2ACF007BD28D /* TaskDetailView.swift */,
-				B13E30FF2C8D2C17007BD28D /* DetailedQuoteView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		B1873AFE2C93A62700C692A7 /* List Views */ = {
+			isa = PBXGroup;
+			children = (
+				B13E30EB2C80156C007BD28D /* MainView.swift */,
+				B13E30ED2C801589007BD28D /* DetailListView.swift */,
+			);
+			path = "List Views";
+			sourceTree = "<group>";
+		};
+		B1873AFF2C93A64100C692A7 /* Detail Views */ = {
+			isa = PBXGroup;
+			children = (
+				B13E30FF2C8D2C17007BD28D /* DetailedQuoteView.swift */,
+				B13E30FD2C8D2ACF007BD28D /* TaskDetailView.swift */,
+				B13E30FB2C8D2AA9007BD28D /* MediaDetailView.swift */,
+			);
+			path = "Detail Views";
+			sourceTree = "<group>";
+		};
+		B1873B002C93A6BC00C692A7 /* Error Handling */ = {
+			isa = PBXGroup;
+			children = (
+				B1873B012C93A6D500C692A7 /* AppError.swift */,
+			);
+			path = "Error Handling";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,18 +256,21 @@
 				B13E30F42C801A70007BD28D /* AddListView.swift in Sources */,
 				B13E30E22C801423007BD28D /* ListItem.swift in Sources */,
 				B13E31242C910D0D007BD28D /* ListCategory.swift in Sources */,
+				B1873B042C93A70200C692A7 /* EditableItem.swift in Sources */,
 				B13E30CA2C80088B007BD28D /* ListyApp.swift in Sources */,
 				B13E30FC2C8D2AA9007BD28D /* MediaDetailView.swift in Sources */,
 				B13E30F22C8016D6007BD28D /* EditItemView.swift in Sources */,
 				B13E31202C91044C007BD28D /* MediaListItem.swift in Sources */,
 				B13E30EE2C801589007BD28D /* DetailListView.swift in Sources */,
 				B13E30D62C80088C007BD28D /* Listy.xcdatamodeld in Sources */,
+				B1873B062C93A72500C692A7 /* DetailQuoteViewModel.swift in Sources */,
 				B13E30E02C80140C007BD28D /* CustomList.swift in Sources */,
 				B13E30DD2C80123F007BD28D /* PersistanceController.swift in Sources */,
 				B13E30E92C80154B007BD28D /* DetailListViewModel.swift in Sources */,
 				B13E30F02C8015A0007BD28D /* AddListItemView.swift in Sources */,
 				B13E30FE2C8D2AD0007BD28D /* TaskDetailView.swift in Sources */,
 				B13E31222C910463007BD28D /* TaskItem.swift in Sources */,
+				B1873B022C93A6D500C692A7 /* AppError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
