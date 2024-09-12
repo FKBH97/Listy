@@ -6,7 +6,7 @@ struct DetailedQuoteView: View {
     var body: some View {
         Form {
             Section(header: Text("Quote")) {
-                Text(quoteItem.text ?? "No text available")
+                Text("\"\(quoteItem.text ?? "")\"") // Shows the quote with quotation marks
             }
             Section(header: Text("Author")) {
                 Text(quoteItem.author ?? "Unknown author")

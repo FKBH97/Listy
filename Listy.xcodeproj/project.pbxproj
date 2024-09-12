@@ -28,6 +28,7 @@
 		B13E31202C91044C007BD28D /* MediaListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13E311F2C91044C007BD28D /* MediaListItem.swift */; };
 		B13E31222C910463007BD28D /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13E31212C910463007BD28D /* TaskItem.swift */; };
 		B13E31242C910D0D007BD28D /* ListCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13E31232C910D0D007BD28D /* ListCategory.swift */; };
+		B1873AFD2C938B3A00C692A7 /* DetailListViewModelError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873AFC2C938B3A00C692A7 /* DetailListViewModelError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		B13E311F2C91044C007BD28D /* MediaListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaListItem.swift; sourceTree = "<group>"; };
 		B13E31212C910463007BD28D /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
 		B13E31232C910D0D007BD28D /* ListCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCategory.swift; sourceTree = "<group>"; };
+		B1873AFC2C938B3A00C692A7 /* DetailListViewModelError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailListViewModelError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 			children = (
 				B13E30E62C801530007BD28D /* MainViewModel.swift */,
 				B13E30E82C80154B007BD28D /* DetailListViewModel.swift */,
+				B1873AFC2C938B3A00C692A7 /* DetailListViewModelError.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 			files = (
 				B13E30E72C801530007BD28D /* MainViewModel.swift in Sources */,
 				B13E311E2C91042B007BD28D /* QuoteItem.swift in Sources */,
+				B1873AFD2C938B3A00C692A7 /* DetailListViewModelError.swift in Sources */,
 				B13E30EC2C80156C007BD28D /* MainView.swift in Sources */,
 				B13E31002C8D2C17007BD28D /* DetailedQuoteView.swift in Sources */,
 				B13E30F42C801A70007BD28D /* AddListView.swift in Sources */,
