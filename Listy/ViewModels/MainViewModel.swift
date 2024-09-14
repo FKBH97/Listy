@@ -55,12 +55,12 @@ class MainViewModel: ObservableObject {
         }
     }
     
-    func addList(name: String, isChecklist: Bool, category: ListCategory) {
+    func addList(name: String, isChecklist: Bool, listType: String) {
         let newList = CustomList(context: viewContext)
         newList.id = UUID()
         newList.name = name
         newList.isChecklist = isChecklist
-        newList.category = category.rawValue
+        newList.listType = listType // Updated from category to listType
         newList.order = Int16(lists.count)
         
         saveContext()

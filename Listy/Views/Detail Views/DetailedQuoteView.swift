@@ -19,8 +19,10 @@ struct DetailedQuoteView: View {
         .navigationTitle("Quote Details")
         .toolbar { toolbarItems }
         .disabled(viewModel.isSaving)
-        .alert(item: $viewModel.error) { error in
-            Alert(title: Text("Error"), message: Text(error.localizedDescription), dismissButton: .default(Text("OK")))
+        .alert(item: $viewModel.error) { identifiableError in
+            Alert(title: Text("Error"),
+                  message: Text(identifiableError.errorDescription ?? "Unknown error"),
+                  dismissButton: .default(Text("OK")))
         }
         .overlay(savingOverlay)
     }
@@ -112,7 +114,7 @@ struct DetailedQuoteView: View {
                 case .success:
                     isEditing = false // Exit edit mode on successful save
                 case .failure(let error):
-                    viewModel.error = error
+                    viewModel.error = IdentifiableError(error)  // Wrap the error
                 }
             }
         }

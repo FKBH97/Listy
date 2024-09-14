@@ -1,77 +1,65 @@
 import SwiftUI
+import CoreData
 
 struct DetailListView: View {
-    @StateObject private var viewModel: DetailListViewModel
+    @ObservedObject var list: CustomList
     @State private var showingAddItem = false
 
-    init(list: CustomList) {
-        _viewModel = StateObject(wrappedValue: DetailListViewModel(list: list))
-    }
-
     var body: some View {
-        ZStack {
-            if viewModel.isLoading {
-                ProgressView("Loading...")
-            } else {
-                List {
-                    ForEach(viewModel.items, id: \.self) { item in
-                        listItemView(for: item)
-                    }
-                    .onDelete { offsets in
-                        viewModel.deleteItems(at: offsets)
-                    }
-                    .onMove { source, destination in
-                        viewModel.moveItems(from: source, to: destination)
-                    }
-                }
+        List {
+            ForEach(list.itemArray, id: \.self) { item in
+                listItemView(for: item)
             }
+            .onDelete(perform: deleteItems)
         }
+        .navigationTitle(list.wrappedName)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                EditButton()
-            }
-            ToolbarItem(placement: .navigationBarLeading) {
                 Button(action: { showingAddItem = true }) {
                     Label("Add Item", systemImage: "plus")
                 }
             }
         }
         .sheet(isPresented: $showingAddItem) {
-            AddListItemView(list: viewModel.list) { text, author, location, context in
-                if viewModel.list.wrappedCategory == ListCategory.quotes.rawValue {
-                    viewModel.addQuoteItem(text: text, author: author, location: location, context: context)
-                } else {
-                    viewModel.addItem(text: text)
-                }
-            }
+            AddListItemView(list: list) // Pass the list directly
         }
-        .alert(item: $viewModel.error) { error in
-            Alert(
-                title: Text("Error"),
-                message: Text(error.localizedDescription),
-                dismissButton: .default(Text("OK"))
-            )
-        }
-        .navigationTitle(viewModel.list.wrappedName)
     }
 
-    @ViewBuilder
     private func listItemView(for item: ListItem) -> some View {
-        switch item {
-        case let quoteItem as QuoteItem:
-            NavigationLink(destination: DetailedQuoteView(quoteItem: quoteItem)) {
-                Text("\"\(quoteItem.text ?? "")\"") // Adds quotation marks for quotes
+        switch list.listType {
+        case "quote":
+            if let quoteItem = item as? QuoteItem {
+                return AnyView(Text("\"\(quoteItem.text ?? "")\" - \(quoteItem.author ?? "")"))
             }
-        case let mediaItem as MediaListItem:
-            NavigationLink(destination: MediaDetailView(mediaItem: mediaItem)) {
-                Text(mediaItem.text ?? "Unnamed Media")
+        case "task":
+            if let taskItem = item as? TaskItem {
+                return AnyView(Toggle(taskItem.text ?? "", isOn: Binding(
+                    get: { taskItem.isCompleted },
+                    set: { newValue in
+                        taskItem.isCompleted = newValue
+                        try? list.managedObjectContext?.save()
+                    }
+                )))
             }
-        case let taskItem as TaskItem:
-            NavigationLink(destination: TaskDetailView(taskItem: taskItem)) {
-                Text(taskItem.text ?? "Unnamed Task")
+        case "media":
+            if let mediaItem = item as? MediaListItem {
+                return AnyView(Text("\(mediaItem.text ?? "") (\(mediaItem.mediaType ?? ""))"))
             }
         default:
-            Text(item.text ?? "Unnamed Item")
+            return AnyView(Text(item.text ?? ""))
+        }
+        return AnyView(EmptyView()) // To ensure matching return types
+    }
+
+    private func deleteItems(at offsets: IndexSet) {
+        for index in offsets {
+            let item = list.itemArray[index]
+            list.managedObjectContext?.delete(item)
+        }
+        do {
+            try list.managedObjectContext?.save()
+        } catch {
+            print("Error deleting item: \(error.localizedDescription)")
         }
     }
 }

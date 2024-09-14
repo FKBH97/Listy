@@ -6,9 +6,9 @@ public class CustomList: NSManagedObject {
     @NSManaged public var id: UUID?
     @NSManaged public var name: String?
     @NSManaged public var isChecklist: Bool
-    @NSManaged public var category: String?
     @NSManaged public var order: Int16
-    @NSManaged public var items: NSSet? // Relationship to ListItem
+    @NSManaged public var items: NSSet?
+    @NSManaged public var listType: String?
 }
 
 extension CustomList {
@@ -16,20 +16,9 @@ extension CustomList {
         return NSFetchRequest<CustomList>(entityName: "CustomList")
     }
 
-    // Convenience methods to manage the relationship with ListItem
-    @objc(addItemsObject:)
-    @NSManaged public func addToItems(_ value: ListItem)
-
-    @objc(removeItemsObject:)
-    @NSManaged public func removeFromItems(_ value: ListItem)
-
     // Wrapped properties for optional values
     var wrappedName: String {
         name ?? "Unknown List"
-    }
-
-    var wrappedCategory: String {
-        category ?? "General"
     }
 
     // Convenience method for accessing the list of items as an array

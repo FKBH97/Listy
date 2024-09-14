@@ -1,17 +1,19 @@
 import Foundation
 
 enum AppError: LocalizedError, Identifiable {
-    case validationError(String)
-    case saveError(String)
     case fetchError(String)
+    case saveError(String)
+    case deleteError(String)
+    case unknownError(String)
     
     var id: String { localizedDescription }
     
     var errorDescription: String? {
         switch self {
-        case .validationError(let message): return message
-        case .saveError(let message): return "Save failed: \(message)"
-        case .fetchError(let message): return "Fetch failed: \(message)"
+        case .fetchError(let message): return "Fetch Error: \(message)"
+        case .saveError(let message): return "Save Error: \(message)"
+        case .deleteError(let message): return "Delete Error: \(message)"
+        case .unknownError(let message): return "Unknown Error: \(message)"
         }
     }
 }

@@ -2,53 +2,65 @@ import SwiftUI
 import CoreData
 
 struct MainView: View {
-    @StateObject private var viewModel: MainViewModel
-    @State private var showingAddList = false
+    @Environment(\.managedObjectContext) private var context
+    @FetchRequest(
+        entity: CustomList.entity(),
+        sortDescriptors: [NSSortDescriptor(keyPath: \CustomList.name, ascending: true)]
+    ) var customLists: FetchedResults<CustomList>
 
-    init(viewContext: NSManagedObjectContext) {
-        _viewModel = StateObject(wrappedValue: MainViewModel(viewContext: viewContext))
-    }
+    @State private var showingAddList = false
 
     var body: some View {
         NavigationView {
             List {
-                ForEach(viewModel.lists, id: \.id) { list in
+                ForEach(customLists, id: \.self) { list in
                     NavigationLink(destination: DetailListView(list: list)) {
                         Text(list.wrappedName)
                     }
                 }
-                .onDelete(perform: deleteLists)
-                .onMove(perform: moveLists)
+                .onDelete(perform: deleteList)
             }
-            .navigationTitle("Lists")
+            .navigationTitle("Your Lists")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: { showingAddList = true }) {
                         Label("Add List", systemImage: "plus")
                     }
                 }
             }
-            .alert(item: $viewModel.error) { error in
-                Alert(title: Text("Error"), message: Text(error.localizedDescription), dismissButton: .default(Text("OK")))
-            }
             .sheet(isPresented: $showingAddList) {
-                AddListView { name, isChecklist, category in
-                    viewModel.addList(name: name, isChecklist: isChecklist, category: category)
+                AddListView { name, isChecklist, listType in
+                    addNewList(name: name, isChecklist: isChecklist, listType: listType)
                 }
             }
         }
     }
 
-    private func deleteLists(offsets: IndexSet) {
-        withAnimation {
-            viewModel.deleteLists(at: offsets)
+    private func addNewList(name: String, isChecklist: Bool, listType: String) {
+        let newList = CustomList(context: context)
+        newList.id = UUID()
+        newList.name = name
+        newList.isChecklist = isChecklist
+        newList.listType = listType // Use listType here
+        newList.order = Int16(customLists.count)
+
+        do {
+            try context.save()
+        } catch {
+            print("Error saving new list: \(error.localizedDescription)")
         }
     }
 
-    private func moveLists(from source: IndexSet, to destination: Int) {
-        viewModel.moveLists(from: source, to: destination)
+    private func deleteList(at offsets: IndexSet) {
+        for index in offsets {
+            let listToDelete = customLists[index]
+            context.delete(listToDelete)
+        }
+
+        do {
+            try context.save()
+        } catch {
+            print("Error deleting list: \(error.localizedDescription)")
+        }
     }
 }
