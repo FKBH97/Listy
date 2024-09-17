@@ -25,14 +25,17 @@ struct MediaSearchResult: Identifiable, Codable {
         return releaseDate ?? "Unknown Date"
     }
 
-    var fullPosterPath: String? {
-        guard let posterPath = posterPath else { return nil }
-        return "https://image.tmdb.org/t/p/w500\(posterPath)"
-    }
-
+    var fullPosterURL: URL? {
+            guard let posterPath = posterPath else { return nil }
+            return URL(string: "https://image.tmdb.org/t/p/w500\(posterPath)")
+        }
+    
     enum CodingKeys: String, CodingKey {
-        case id, title, name, overview, posterPath = "poster_path", voteAverage = "vote_average"
-        case releaseDate = "release_date"
-        case mediaType = "media_type"
-    }
+            case id, title, name, overview
+            case releaseDate = "release_date"
+            case mediaType = "media_type"
+            case posterPath = "poster_path"
+            case voteAverage = "vote_average"
+        }
+        
 }

@@ -42,6 +42,9 @@
 		B1873B202C95086A00C692A7 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B1F2C95086A00C692A7 /* APIError.swift */; };
 		B1873B222C950C6000C692A7 /* TMDbAPIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B212C950C6000C692A7 /* TMDbAPIConfig.swift */; };
 		B1873B242C961CA300C692A7 /* MediaDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B232C961CA300C692A7 /* MediaDetailViewModel.swift */; };
+		B1873B262C9A01C100C692A7 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B252C9A01C100C692A7 /* ErrorView.swift */; };
+		B1873B282C9A01E200C692A7 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B272C9A01E200C692A7 /* Formatters.swift */; };
+		B1873B2A2C9A0A8400C692A7 /* ListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B292C9A0A8400C692A7 /* ListManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +84,9 @@
 		B1873B1F2C95086A00C692A7 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		B1873B212C950C6000C692A7 /* TMDbAPIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDbAPIConfig.swift; sourceTree = "<group>"; };
 		B1873B232C961CA300C692A7 /* MediaDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaDetailViewModel.swift; sourceTree = "<group>"; };
+		B1873B252C9A01C100C692A7 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		B1873B272C9A01E200C692A7 /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
+		B1873B292C9A0A8400C692A7 /* ListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +129,8 @@
 				B13E30CD2C80088C007BD28D /* Assets.xcassets */,
 				B13E30D42C80088C007BD28D /* Listy.xcdatamodeld */,
 				B13E30CF2C80088C007BD28D /* Preview Content */,
+				B1873B272C9A01E200C692A7 /* Formatters.swift */,
+				B1873B292C9A0A8400C692A7 /* ListManager.swift */,
 			);
 			path = Listy;
 			sourceTree = "<group>";
@@ -169,6 +177,7 @@
 				B1873B1A2C95050300C692A7 /* Media View */,
 				B1873AFE2C93A62700C692A7 /* List Views */,
 				B1873AFF2C93A64100C692A7 /* Detail Views */,
+				B1873B252C9A01C100C692A7 /* ErrorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -301,12 +310,14 @@
 				B1873AFD2C938B3A00C692A7 /* DetailListViewModelError.swift in Sources */,
 				B13E30EC2C80156C007BD28D /* MainView.swift in Sources */,
 				B13E31002C8D2C17007BD28D /* DetailedQuoteView.swift in Sources */,
+				B1873B2A2C9A0A8400C692A7 /* ListManager.swift in Sources */,
 				B13E30F42C801A70007BD28D /* AddListView.swift in Sources */,
 				B1873B112C93B73500C692A7 /* MediaDetailView.swift in Sources */,
 				B13E30E22C801423007BD28D /* ListItem.swift in Sources */,
 				B13E31242C910D0D007BD28D /* ListCategory.swift in Sources */,
 				B1873B042C93A70200C692A7 /* EditableItem.swift in Sources */,
 				B1873B0D2C93AD8C00C692A7 /* MediaSearchViewModel.swift in Sources */,
+				B1873B282C9A01E200C692A7 /* Formatters.swift in Sources */,
 				B1873B202C95086A00C692A7 /* APIError.swift in Sources */,
 				B1873B092C93AD6300C692A7 /* TMDbAPIService.swift in Sources */,
 				B13E30CA2C80088B007BD28D /* ListyApp.swift in Sources */,
@@ -315,6 +326,7 @@
 				B1873B152C93BC5300C692A7 /* IdentifiableError.swift in Sources */,
 				B13E30EE2C801589007BD28D /* DetailListView.swift in Sources */,
 				B1873B192C9504EE00C692A7 /* MediaSearchResultRow.swift in Sources */,
+				B1873B262C9A01C100C692A7 /* ErrorView.swift in Sources */,
 				B1873B222C950C6000C692A7 /* TMDbAPIConfig.swift in Sources */,
 				B13E30D62C80088C007BD28D /* Listy.xcdatamodeld in Sources */,
 				B1873B062C93A72500C692A7 /* DetailQuoteViewModel.swift in Sources */,

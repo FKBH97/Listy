@@ -5,13 +5,15 @@ struct MediaSearchResultRow: View {
 
     var body: some View {
         HStack {
-            // Safely unwrap the URL from result.fullPosterPath
-            AsyncImage(url: URL(string: result.fullPosterPath ?? "")) { image in
-                image.resizable().aspectRatio(contentMode: .fit)
-            } placeholder: {
-                Color.gray
+            // Corrected property from `fullPosterPath` to `fullPosterURL`
+            if let posterURL = result.fullPosterURL {
+                AsyncImage(url: posterURL) { image in
+                    image.resizable().aspectRatio(contentMode: .fit)
+                } placeholder: {
+                    Color.gray
+                }
+                .frame(width: 50, height: 75)
             }
-            .frame(width: 50, height: 75)
 
             VStack(alignment: .leading) {
                 Text(result.displayTitle)

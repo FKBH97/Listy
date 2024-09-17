@@ -4,9 +4,7 @@ import Combine
 class MediaDetailViewModel: ObservableObject {
     @Published var mediaDetails: MediaSearchResult?
     @Published var isLoading = false
-    @Published var error: IdentifiableError?  // Use IdentifiableError for UI alerts
-
-    private var cancellables = Set<AnyCancellable>()
+    @Published var error: IdentifiableError?
 
     func fetchDetails(tmdbId: Int64, mediaType: String) {
         guard tmdbId != 0 else {
@@ -18,7 +16,7 @@ class MediaDetailViewModel: ObservableObject {
         isLoading = true
         print("Fetching details for tmdbId: \(tmdbId), mediaType: \(mediaType)")
 
-        TMDbAPIService.shared.getMediaDetails(id: Int(tmdbId), mediaType: mediaType) { [weak self] result in
+        TMDbAPIService.shared.getMediaDetailsWithRetry(id: Int(tmdbId), mediaType: mediaType) { [weak self] result in
             DispatchQueue.main.async {
                 self?.isLoading = false
                 switch result {
@@ -27,7 +25,7 @@ class MediaDetailViewModel: ObservableObject {
                     self?.mediaDetails = details
                 case .failure(let apiError):
                     print("Failed to fetch details: \(apiError.localizedDescription)")
-                    self?.error = IdentifiableError(apiError)  // Wrap the APIError with IdentifiableError
+                    self?.error = IdentifiableError(apiError)
                 }
             }
         }

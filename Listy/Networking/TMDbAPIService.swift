@@ -84,4 +84,23 @@ class TMDbAPIService {
             }
         }.resume()
     }
+
+    // Retry Logic Implementation
+    func getMediaDetailsWithRetry(id: Int, mediaType: String, retries: Int = 3, completion: @escaping (Result<MediaSearchResult, IdentifiableError>) -> Void) {
+        getMediaDetails(id: id, mediaType: mediaType) { result in
+            switch result {
+            case .success:
+                completion(result)
+            case .failure(let error):
+                if retries > 0 {
+                    print("Retrying API call. Attempts left: \(retries - 1)")
+                    DispatchQueue.global().asyncAfter(deadline: .now() + 1.0) {
+                        self.getMediaDetailsWithRetry(id: id, mediaType: mediaType, retries: retries - 1, completion: completion)
+                    }
+                } else {
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
 }
