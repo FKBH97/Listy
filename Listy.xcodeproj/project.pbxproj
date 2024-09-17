@@ -41,6 +41,7 @@
 		B1873B1E2C95079D00C692A7 /* MediaSearchModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B1D2C95079D00C692A7 /* MediaSearchModels.swift */; };
 		B1873B202C95086A00C692A7 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B1F2C95086A00C692A7 /* APIError.swift */; };
 		B1873B222C950C6000C692A7 /* TMDbAPIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B212C950C6000C692A7 /* TMDbAPIConfig.swift */; };
+		B1873B242C961CA300C692A7 /* MediaDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B232C961CA300C692A7 /* MediaDetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +80,7 @@
 		B1873B1D2C95079D00C692A7 /* MediaSearchModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaSearchModels.swift; sourceTree = "<group>"; };
 		B1873B1F2C95086A00C692A7 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		B1873B212C950C6000C692A7 /* TMDbAPIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDbAPIConfig.swift; sourceTree = "<group>"; };
+		B1873B232C961CA300C692A7 /* MediaDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaDetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 				B1873AFC2C938B3A00C692A7 /* DetailListViewModelError.swift */,
 				B1873B052C93A72500C692A7 /* DetailQuoteViewModel.swift */,
 				B1873B0C2C93AD8C00C692A7 /* MediaSearchViewModel.swift */,
+				B1873B232C961CA300C692A7 /* MediaDetailViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				B13E30DD2C80123F007BD28D /* PersistanceController.swift in Sources */,
 				B1873B1C2C95054200C692A7 /* ManualMediaEntryView.swift in Sources */,
 				B13E30E92C80154B007BD28D /* DetailListViewModel.swift in Sources */,
+				B1873B242C961CA300C692A7 /* MediaDetailViewModel.swift in Sources */,
 				B13E30F02C8015A0007BD28D /* AddListItemView.swift in Sources */,
 				B13E30FE2C8D2AD0007BD28D /* TaskDetailView.swift in Sources */,
 				B13E31222C910463007BD28D /* TaskItem.swift in Sources */,

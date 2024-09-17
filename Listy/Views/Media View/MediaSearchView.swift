@@ -20,6 +20,7 @@ struct MediaSearchView: View {
                 } else {
                     List(viewModel.searchResults) { result in
                         Button(action: {
+                            print("Selected media item with ID: \(result.id)")
                             onSelect(result)
                             presentationMode.wrappedValue.dismiss()
                         }) {

@@ -21,7 +21,7 @@
         <attribute name="overview" optional="YES" attributeType="String"/>
         <attribute name="posterURL" optional="YES" attributeType="String"/>
         <attribute name="releaseDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="tmbdID" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="tmdbId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <entity name="QuoteItem" representedClassName="QuoteItem" parentEntity="ListItem" syncable="YES">
         <attribute name="author" optional="YES" attributeType="String"/>

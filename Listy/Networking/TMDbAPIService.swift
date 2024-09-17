@@ -2,32 +2,85 @@ import Foundation
 
 class TMDbAPIService {
     static let shared = TMDbAPIService()
-    private init() {}
 
-    func searchMedia(query: String, completion: @escaping (Result<[MediaSearchResult], APIError>) -> Void) {
-        let urlString = "\(TMDbAPIConfig.baseURL)/search/multi?api_key=\(TMDbAPIConfig.apiKey)&query=\(query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")"
-
+    // Search media based on query
+    func searchMedia(query: String, completion: @escaping (Result<[MediaSearchResult], IdentifiableError>) -> Void) {
+        let accessToken = TMDbAPIConfig.shared.apiAccessToken
+        let urlString = "\(TMDbAPIConfig.baseURL)/search/multi?query=\(query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")"
+        
         guard let url = URL(string: urlString) else {
-            completion(.failure(.invalidResponse))
+            completion(.failure(IdentifiableError(APIError.invalidURL)))
             return
         }
 
-        URLSession.shared.dataTask(with: url) { data, response, error in
+        var request = URLRequest(url: url)
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+
+        URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
-                completion(.failure(.networkError(error)))
+                print("Network error: \(error.localizedDescription)")
+                completion(.failure(IdentifiableError(APIError.networkError(error))))
+                return
+            }
+
+            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+                completion(.failure(IdentifiableError(APIError.invalidResponse)))
                 return
             }
 
             guard let data = data else {
-                completion(.failure(.invalidResponse))
+                completion(.failure(IdentifiableError(APIError.noData)))
                 return
             }
 
             do {
-                let searchResponse = try JSONDecoder().decode(MediaSearchResponse.self, from: data)
-                completion(.success(searchResponse.results))
+                let decodedResponse = try JSONDecoder().decode(MediaSearchResponse.self, from: data)
+                print("Successfully decoded search response")
+                completion(.success(decodedResponse.results))
             } catch {
-                completion(.failure(.decodingError(error)))
+                print("Decoding error: \(error.localizedDescription)")
+                completion(.failure(IdentifiableError(APIError.decodingError)))
+            }
+        }.resume()
+    }
+
+    // Fetch media details based on the media ID and type
+    func getMediaDetails(id: Int, mediaType: String, completion: @escaping (Result<MediaSearchResult, IdentifiableError>) -> Void) {
+        let accessToken = TMDbAPIConfig.shared.apiAccessToken
+        let urlString = "\(TMDbAPIConfig.baseURL)/\(mediaType)/\(id)"
+
+        guard let url = URL(string: urlString) else {
+            completion(.failure(IdentifiableError(APIError.invalidURL)))
+            return
+        }
+
+        var request = URLRequest(url: url)
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("Network error: \(error.localizedDescription)")
+                completion(.failure(IdentifiableError(APIError.networkError(error))))
+                return
+            }
+
+            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+                completion(.failure(IdentifiableError(APIError.invalidResponse)))
+                return
+            }
+
+            guard let data = data else {
+                completion(.failure(IdentifiableError(APIError.noData)))
+                return
+            }
+
+            do {
+                let decodedResponse = try JSONDecoder().decode(MediaSearchResult.self, from: data)
+                print("Successfully fetched media details")
+                completion(.success(decodedResponse))
+            } catch {
+                print("Decoding error: \(error.localizedDescription)")
+                completion(.failure(IdentifiableError(APIError.decodingError)))
             }
         }.resume()
     }

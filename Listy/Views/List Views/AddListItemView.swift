@@ -11,7 +11,9 @@ struct AddListItemView: View {
     @State private var author = ""
     @State private var dueDate = Date()
     @State private var mediaType = ""
+    @State private var fetchedTmdbId: Int64 = 0 // Store tmdbId here
     @State private var isSearching = false
+    @State private var saveError: IdentifiableError?
 
     var body: some View {
         Form {
@@ -38,13 +40,23 @@ struct AddListItemView: View {
         .sheet(isPresented: $isSearching) {
             MediaSearchView(onSelect: { result in
                 text = result.displayTitle
-                mediaType = result.mediaType
+                mediaType = result.mediaType ?? "Unknown"
+                fetchedTmdbId = Int64(result.id)
+                print("Selected media with tmdbId: \(fetchedTmdbId)") // Log the selected tmdbId
                 isSearching = false
             })
+        }
+        .alert(item: $saveError) { error in
+            Alert(title: Text("Save Error"), message: Text(error.errorDescription ?? "Unable to save item"))
         }
     }
 
     private func saveItem() {
+        guard fetchedTmdbId != 0 else {
+            saveError = IdentifiableError(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid tmdbId - Cannot save item."]))
+            return
+        }
+
         let newItem: ListItem
 
         switch list.listType {
@@ -59,6 +71,8 @@ struct AddListItemView: View {
         case "media":
             let mediaItem = MediaListItem(context: context)
             mediaItem.mediaType = mediaType
+            mediaItem.tmdbId = fetchedTmdbId
+            print("Saving media item with tmdbId: \(mediaItem.tmdbId)") // Log tmdbId before saving
             newItem = mediaItem
         default:
             newItem = ListItem(context: context)
@@ -69,6 +83,7 @@ struct AddListItemView: View {
 
         do {
             try context.save()
+            print("Item saved successfully with tmdbId: \(fetchedTmdbId)") // Log after successful save
             presentationMode.wrappedValue.dismiss()
         } catch {
             print("Error saving item: \(error.localizedDescription)")

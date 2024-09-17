@@ -25,6 +25,7 @@ struct DetailListView: View {
         }
     }
 
+    // Update the listItemView function to include navigation to MediaDetailView
     private func listItemView(for item: ListItem) -> some View {
         switch list.listType {
         case "quote":
@@ -43,7 +44,12 @@ struct DetailListView: View {
             }
         case "media":
             if let mediaItem = item as? MediaListItem {
-                return AnyView(Text("\(mediaItem.text ?? "") (\(mediaItem.mediaType ?? ""))"))
+                // Navigate to MediaDetailView when tapping on a media item
+                return AnyView(
+                    NavigationLink(destination: MediaDetailView(mediaItem: mediaItem)) {
+                        Text("\(mediaItem.text ?? "") (\(mediaItem.mediaType ?? ""))")
+                    }
+                )
             }
         default:
             return AnyView(Text(item.text ?? ""))
@@ -63,3 +69,4 @@ struct DetailListView: View {
         }
     }
 }
+

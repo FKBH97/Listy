@@ -5,6 +5,7 @@ struct MediaSearchResultRow: View {
 
     var body: some View {
         HStack {
+            // Safely unwrap the URL from result.fullPosterPath
             AsyncImage(url: URL(string: result.fullPosterPath ?? "")) { image in
                 image.resizable().aspectRatio(contentMode: .fit)
             } placeholder: {
@@ -15,9 +16,12 @@ struct MediaSearchResultRow: View {
             VStack(alignment: .leading) {
                 Text(result.displayTitle)
                     .font(.headline)
+
                 Text(result.displayDate)
                     .font(.subheadline)
-                Text(result.mediaType.capitalized)
+
+                // Safely unwrap result.mediaType and capitalize it, provide default if nil
+                Text(result.mediaType?.capitalized ?? "Unknown")
                     .font(.caption)
             }
         }
