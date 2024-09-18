@@ -119,18 +119,14 @@
 		B13E30C82C80088B007BD28D /* Listy */ = {
 			isa = PBXGroup;
 			children = (
-				B1873B072C93AD3600C692A7 /* Networking */,
-				B1873B002C93A6BC00C692A7 /* Error Handling */,
+				B1873B352C9A180600C692A7 /* Helpers */,
 				B13E30EA2C80155F007BD28D /* Views */,
 				B13E30E52C80151C007BD28D /* ViewModels */,
 				B13E30DE2C8013F2007BD28D /* Models */,
 				B13E30C92C80088B007BD28D /* ListyApp.swift */,
-				B13E30DC2C80123F007BD28D /* PersistanceController.swift */,
 				B13E30CD2C80088C007BD28D /* Assets.xcassets */,
 				B13E30D42C80088C007BD28D /* Listy.xcdatamodeld */,
 				B13E30CF2C80088C007BD28D /* Preview Content */,
-				B1873B272C9A01E200C692A7 /* Formatters.swift */,
-				B1873B292C9A0A8400C692A7 /* ListManager.swift */,
 			);
 			path = Listy;
 			sourceTree = "<group>";
@@ -161,12 +157,10 @@
 		B13E30E52C80151C007BD28D /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				B13E30E62C801530007BD28D /* MainViewModel.swift */,
-				B13E30E82C80154B007BD28D /* DetailListViewModel.swift */,
-				B1873AFC2C938B3A00C692A7 /* DetailListViewModelError.swift */,
-				B1873B052C93A72500C692A7 /* DetailQuoteViewModel.swift */,
-				B1873B0C2C93AD8C00C692A7 /* MediaSearchViewModel.swift */,
-				B1873B232C961CA300C692A7 /* MediaDetailViewModel.swift */,
+				B1873B342C9A17AF00C692A7 /* Task View Models */,
+				B1873B332C9A17A300C692A7 /* Media View Models */,
+				B1873B322C9A179900C692A7 /* Quote View Models */,
+				B1873B312C9A178300C692A7 /* List View Models */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -174,10 +168,10 @@
 		B13E30EA2C80155F007BD28D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B1873B2C2C9A172E00C692A7 /* Task View */,
+				B1873B2B2C9A171200C692A7 /* Quote View */,
 				B1873B1A2C95050300C692A7 /* Media View */,
 				B1873AFE2C93A62700C692A7 /* List Views */,
-				B1873AFF2C93A64100C692A7 /* Detail Views */,
-				B1873B252C9A01C100C692A7 /* ErrorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -185,6 +179,7 @@
 		B1873AFE2C93A62700C692A7 /* List Views */ = {
 			isa = PBXGroup;
 			children = (
+				B1873B252C9A01C100C692A7 /* ErrorView.swift */,
 				B13E30F32C801A70007BD28D /* AddListView.swift */,
 				B13E30F12C8016D6007BD28D /* EditItemView.swift */,
 				B13E30EF2C8015A0007BD28D /* AddListItemView.swift */,
@@ -192,15 +187,6 @@
 				B13E30ED2C801589007BD28D /* DetailListView.swift */,
 			);
 			path = "List Views";
-			sourceTree = "<group>";
-		};
-		B1873AFF2C93A64100C692A7 /* Detail Views */ = {
-			isa = PBXGroup;
-			children = (
-				B13E30FF2C8D2C17007BD28D /* DetailedQuoteView.swift */,
-				B13E30FD2C8D2ACF007BD28D /* TaskDetailView.swift */,
-			);
-			path = "Detail Views";
 			sourceTree = "<group>";
 		};
 		B1873B002C93A6BC00C692A7 /* Error Handling */ = {
@@ -231,6 +217,68 @@
 				B1873B1B2C95054200C692A7 /* ManualMediaEntryView.swift */,
 			);
 			path = "Media View";
+			sourceTree = "<group>";
+		};
+		B1873B2B2C9A171200C692A7 /* Quote View */ = {
+			isa = PBXGroup;
+			children = (
+				B13E30FF2C8D2C17007BD28D /* DetailedQuoteView.swift */,
+			);
+			path = "Quote View";
+			sourceTree = "<group>";
+		};
+		B1873B2C2C9A172E00C692A7 /* Task View */ = {
+			isa = PBXGroup;
+			children = (
+				B13E30FD2C8D2ACF007BD28D /* TaskDetailView.swift */,
+			);
+			path = "Task View";
+			sourceTree = "<group>";
+		};
+		B1873B312C9A178300C692A7 /* List View Models */ = {
+			isa = PBXGroup;
+			children = (
+				B1873AFC2C938B3A00C692A7 /* DetailListViewModelError.swift */,
+				B13E30E82C80154B007BD28D /* DetailListViewModel.swift */,
+				B13E30E62C801530007BD28D /* MainViewModel.swift */,
+			);
+			path = "List View Models";
+			sourceTree = "<group>";
+		};
+		B1873B322C9A179900C692A7 /* Quote View Models */ = {
+			isa = PBXGroup;
+			children = (
+				B1873B052C93A72500C692A7 /* DetailQuoteViewModel.swift */,
+			);
+			path = "Quote View Models";
+			sourceTree = "<group>";
+		};
+		B1873B332C9A17A300C692A7 /* Media View Models */ = {
+			isa = PBXGroup;
+			children = (
+				B1873B232C961CA300C692A7 /* MediaDetailViewModel.swift */,
+				B1873B0C2C93AD8C00C692A7 /* MediaSearchViewModel.swift */,
+			);
+			path = "Media View Models";
+			sourceTree = "<group>";
+		};
+		B1873B342C9A17AF00C692A7 /* Task View Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Task View Models";
+			sourceTree = "<group>";
+		};
+		B1873B352C9A180600C692A7 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B1873B002C93A6BC00C692A7 /* Error Handling */,
+				B1873B072C93AD3600C692A7 /* Networking */,
+				B13E30DC2C80123F007BD28D /* PersistanceController.swift */,
+				B1873B272C9A01E200C692A7 /* Formatters.swift */,
+				B1873B292C9A0A8400C692A7 /* ListManager.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
