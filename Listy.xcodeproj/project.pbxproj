@@ -45,6 +45,13 @@
 		B1873B262C9A01C100C692A7 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B252C9A01C100C692A7 /* ErrorView.swift */; };
 		B1873B282C9A01E200C692A7 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B272C9A01E200C692A7 /* Formatters.swift */; };
 		B1873B2A2C9A0A8400C692A7 /* ListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B292C9A0A8400C692A7 /* ListManager.swift */; };
+		B1873B372C9B529C00C692A7 /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B362C9B529C00C692A7 /* TaskListView.swift */; };
+		B1873B392C9B52C700C692A7 /* AddTaskItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B382C9B52C700C692A7 /* AddTaskItemView.swift */; };
+		B1873B3B2C9B52E400C692A7 /* DropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B3A2C9B52E400C692A7 /* DropDelegate.swift */; };
+		B1873B3D2C9B55EF00C692A7 /* TaskRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B3C2C9B55EF00C692A7 /* TaskRowView.swift */; };
+		B1873B3F2C9B5C4D00C692A7 /* TaskListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B3E2C9B5C4D00C692A7 /* TaskListViewModel.swift */; };
+		B1873B412C9B761100C692A7 /* KeyboardApdaptive.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B402C9B761100C692A7 /* KeyboardApdaptive.swift */; };
+		B1873B432C9B7C1A00C692A7 /* TaskEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B422C9B7C1A00C692A7 /* TaskEditView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +94,13 @@
 		B1873B252C9A01C100C692A7 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		B1873B272C9A01E200C692A7 /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
 		B1873B292C9A0A8400C692A7 /* ListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListManager.swift; sourceTree = "<group>"; };
+		B1873B362C9B529C00C692A7 /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
+		B1873B382C9B52C700C692A7 /* AddTaskItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskItemView.swift; sourceTree = "<group>"; };
+		B1873B3A2C9B52E400C692A7 /* DropDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDelegate.swift; sourceTree = "<group>"; };
+		B1873B3C2C9B55EF00C692A7 /* TaskRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRowView.swift; sourceTree = "<group>"; };
+		B1873B3E2C9B5C4D00C692A7 /* TaskListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewModel.swift; sourceTree = "<group>"; };
+		B1873B402C9B761100C692A7 /* KeyboardApdaptive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardApdaptive.swift; sourceTree = "<group>"; };
+		B1873B422C9B7C1A00C692A7 /* TaskEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskEditView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +186,7 @@
 				B1873B2B2C9A171200C692A7 /* Quote View */,
 				B1873B1A2C95050300C692A7 /* Media View */,
 				B1873AFE2C93A62700C692A7 /* List Views */,
+				B1873B402C9B761100C692A7 /* KeyboardApdaptive.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -231,6 +246,10 @@
 			isa = PBXGroup;
 			children = (
 				B13E30FD2C8D2ACF007BD28D /* TaskDetailView.swift */,
+				B1873B362C9B529C00C692A7 /* TaskListView.swift */,
+				B1873B382C9B52C700C692A7 /* AddTaskItemView.swift */,
+				B1873B3C2C9B55EF00C692A7 /* TaskRowView.swift */,
+				B1873B422C9B7C1A00C692A7 /* TaskEditView.swift */,
 			);
 			path = "Task View";
 			sourceTree = "<group>";
@@ -265,6 +284,7 @@
 		B1873B342C9A17AF00C692A7 /* Task View Models */ = {
 			isa = PBXGroup;
 			children = (
+				B1873B3E2C9B5C4D00C692A7 /* TaskListViewModel.swift */,
 			);
 			path = "Task View Models";
 			sourceTree = "<group>";
@@ -277,6 +297,7 @@
 				B13E30DC2C80123F007BD28D /* PersistanceController.swift */,
 				B1873B272C9A01E200C692A7 /* Formatters.swift */,
 				B1873B292C9A0A8400C692A7 /* ListManager.swift */,
+				B1873B3A2C9B52E400C692A7 /* DropDelegate.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -355,13 +376,19 @@
 				B1873B132C93B79700C692A7 /* MediaSearchView.swift in Sources */,
 				B1873B1E2C95079D00C692A7 /* MediaSearchModels.swift in Sources */,
 				B13E311E2C91042B007BD28D /* QuoteItem.swift in Sources */,
+				B1873B372C9B529C00C692A7 /* TaskListView.swift in Sources */,
 				B1873AFD2C938B3A00C692A7 /* DetailListViewModelError.swift in Sources */,
+				B1873B392C9B52C700C692A7 /* AddTaskItemView.swift in Sources */,
 				B13E30EC2C80156C007BD28D /* MainView.swift in Sources */,
 				B13E31002C8D2C17007BD28D /* DetailedQuoteView.swift in Sources */,
+				B1873B432C9B7C1A00C692A7 /* TaskEditView.swift in Sources */,
 				B1873B2A2C9A0A8400C692A7 /* ListManager.swift in Sources */,
+				B1873B3D2C9B55EF00C692A7 /* TaskRowView.swift in Sources */,
 				B13E30F42C801A70007BD28D /* AddListView.swift in Sources */,
 				B1873B112C93B73500C692A7 /* MediaDetailView.swift in Sources */,
 				B13E30E22C801423007BD28D /* ListItem.swift in Sources */,
+				B1873B3B2C9B52E400C692A7 /* DropDelegate.swift in Sources */,
+				B1873B412C9B761100C692A7 /* KeyboardApdaptive.swift in Sources */,
 				B13E31242C910D0D007BD28D /* ListCategory.swift in Sources */,
 				B1873B042C93A70200C692A7 /* EditableItem.swift in Sources */,
 				B1873B0D2C93AD8C00C692A7 /* MediaSearchViewModel.swift in Sources */,
@@ -373,6 +400,7 @@
 				B13E31202C91044C007BD28D /* MediaListItem.swift in Sources */,
 				B1873B152C93BC5300C692A7 /* IdentifiableError.swift in Sources */,
 				B13E30EE2C801589007BD28D /* DetailListView.swift in Sources */,
+				B1873B3F2C9B5C4D00C692A7 /* TaskListViewModel.swift in Sources */,
 				B1873B192C9504EE00C692A7 /* MediaSearchResultRow.swift in Sources */,
 				B1873B262C9A01C100C692A7 /* ErrorView.swift in Sources */,
 				B1873B222C950C6000C692A7 /* TMDbAPIConfig.swift in Sources */,

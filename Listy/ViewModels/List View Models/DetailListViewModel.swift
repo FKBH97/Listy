@@ -4,7 +4,7 @@ import CoreData
 class DetailListViewModel: ObservableObject {
     @Published var items: [ListItem] = []
     @Published var error: AppError?
-    @Published var isLoading = true // Added loading state
+    @Published var isLoading = true
 
     let context: NSManagedObjectContext
     let list: CustomList
@@ -30,20 +30,9 @@ class DetailListViewModel: ObservableObject {
         }
     }
 
-    func addQuoteItem(text: String, author: String, location: String, context: String) {
-        let newItem = QuoteItem(context: self.context)
-        newItem.text = text
-        newItem.author = author
-        newItem.location = location
-        newItem.context = context
-        newItem.customList = list
-
-        do {
-            try self.context.save()
-            items.append(newItem)
-        } catch {
-            self.error = .saveError("Failed to save item: \(error.localizedDescription)")
-        }
+    func updateTaskCompletion(task: TaskItem, isCompleted: Bool) {
+        task.isCompleted = isCompleted
+        saveContext()
     }
 
     func deleteItems(at offsets: IndexSet) {
@@ -54,14 +43,14 @@ class DetailListViewModel: ObservableObject {
 
         do {
             try context.save()
-            items.remove(atOffsets: offsets)
+            fetchItems()
         } catch {
             self.error = .deleteError("Failed to delete items: \(error.localizedDescription)")
         }
     }
 
-    func moveItems(from source: IndexSet, to destination: Int) {
-        items.move(fromOffsets: source, toOffset: destination)
+    func moveTasks(from sourceIndex: Int, to destinationIndex: Int) {
+        items.move(fromOffsets: IndexSet(integer: sourceIndex), toOffset: destinationIndex)
         saveOrder()
     }
 
@@ -74,6 +63,14 @@ class DetailListViewModel: ObservableObject {
             try context.save()
         } catch {
             self.error = .saveError("Failed to save item order: \(error.localizedDescription)")
+        }
+    }
+
+    private func saveContext() {
+        do {
+            try context.save()
+        } catch {
+            self.error = .saveError("Failed to save task completion: \(error.localizedDescription)")
         }
     }
 }

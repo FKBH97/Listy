@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct MediaDetailView: View {
-    @ObservedObject var mediaItem: MediaListItem
+    let mediaItem: MediaListItem
     @StateObject private var viewModel = MediaDetailViewModel()
 
     var body: some View {

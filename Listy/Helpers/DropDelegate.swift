@@ -1,8 +1,28 @@
-//
-//  DropDelegate.swift
-//  Listy
-//
-//  Created by Kase Vyas on 9/18/24.
-//
+import SwiftUI
 
-import Foundation
+struct TaskDropDelegate: DropDelegate {
+    let task: TaskItem
+    let tasks: [TaskItem]
+    @Binding var draggedTask: TaskItem?
+    let viewModel: DetailListViewModel
+
+    func performDrop(info: DropInfo) -> Bool {
+        guard let draggedTask = draggedTask else { return false }
+        guard let fromIndex = tasks.firstIndex(of: draggedTask),
+              let toIndex = tasks.firstIndex(of: task) else { return false }
+        
+        viewModel.moveTasks(from: fromIndex, to: toIndex)
+        self.draggedTask = nil
+        return true
+    }
+
+    func dropEntered(info: DropInfo) {
+        guard let draggedTask = draggedTask,
+              let fromIndex = tasks.firstIndex(of: draggedTask),
+              let toIndex = tasks.firstIndex(of: task) else { return }
+
+        if fromIndex != toIndex {
+            viewModel.moveTasks(from: fromIndex, to: toIndex)
+        }
+    }
+}

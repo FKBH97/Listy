@@ -1,18 +1,27 @@
-//
-//  TaskRowView.swift
-//  Listy
-//
-//  Created by Kase Vyas on 9/18/24.
-//
-
 import SwiftUI
 
 struct TaskRowView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+    @ObservedObject var task: TaskItem
 
-#Preview {
-    TaskRowView()
+    var body: some View {
+        HStack {
+            VStack(alignment: .leading) {
+                Text(task.taskText) // Use taskText directly
+                    .font(.headline)
+                
+                if let dueDate = task.wrappedDueDate {
+                    Text(dueDate, style: .date)
+                        .font(.caption)
+                }
+            }
+            Spacer()
+            if task.priority > 0 {
+                Text("Priority: \(task.wrappedPriority.description)")
+                    .font(.caption)
+                    .padding(4)
+                    .background(Color.yellow.opacity(0.3))
+                    .cornerRadius(4)
+            }
+        }
+    }
 }
