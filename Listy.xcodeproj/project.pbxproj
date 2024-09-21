@@ -52,6 +52,8 @@
 		B1873B3F2C9B5C4D00C692A7 /* TaskListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B3E2C9B5C4D00C692A7 /* TaskListViewModel.swift */; };
 		B1873B412C9B761100C692A7 /* KeyboardApdaptive.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B402C9B761100C692A7 /* KeyboardApdaptive.swift */; };
 		B1873B432C9B7C1A00C692A7 /* TaskEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B422C9B7C1A00C692A7 /* TaskEditView.swift */; };
+		B1873B452C9BC95700C692A7 /* CheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B442C9BC95700C692A7 /* CheckBoxView.swift */; };
+		B1D607482C9F5F7D00A48E59 /* ListEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D607472C9F5F7D00A48E59 /* ListEditView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,6 +103,8 @@
 		B1873B3E2C9B5C4D00C692A7 /* TaskListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewModel.swift; sourceTree = "<group>"; };
 		B1873B402C9B761100C692A7 /* KeyboardApdaptive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardApdaptive.swift; sourceTree = "<group>"; };
 		B1873B422C9B7C1A00C692A7 /* TaskEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskEditView.swift; sourceTree = "<group>"; };
+		B1873B442C9BC95700C692A7 /* CheckBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxView.swift; sourceTree = "<group>"; };
+		B1D607472C9F5F7D00A48E59 /* ListEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEditView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +191,7 @@
 				B1873B1A2C95050300C692A7 /* Media View */,
 				B1873AFE2C93A62700C692A7 /* List Views */,
 				B1873B402C9B761100C692A7 /* KeyboardApdaptive.swift */,
+				B1873B442C9BC95700C692A7 /* CheckBoxView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -200,6 +205,7 @@
 				B13E30EF2C8015A0007BD28D /* AddListItemView.swift */,
 				B13E30EB2C80156C007BD28D /* MainView.swift */,
 				B13E30ED2C801589007BD28D /* DetailListView.swift */,
+				B1D607472C9F5F7D00A48E59 /* ListEditView.swift */,
 			);
 			path = "List Views";
 			sourceTree = "<group>";
@@ -396,6 +402,7 @@
 				B1873B202C95086A00C692A7 /* APIError.swift in Sources */,
 				B1873B092C93AD6300C692A7 /* TMDbAPIService.swift in Sources */,
 				B13E30CA2C80088B007BD28D /* ListyApp.swift in Sources */,
+				B1D607482C9F5F7D00A48E59 /* ListEditView.swift in Sources */,
 				B13E30F22C8016D6007BD28D /* EditItemView.swift in Sources */,
 				B13E31202C91044C007BD28D /* MediaListItem.swift in Sources */,
 				B1873B152C93BC5300C692A7 /* IdentifiableError.swift in Sources */,
@@ -411,6 +418,7 @@
 				B1873B1C2C95054200C692A7 /* ManualMediaEntryView.swift in Sources */,
 				B13E30E92C80154B007BD28D /* DetailListViewModel.swift in Sources */,
 				B1873B242C961CA300C692A7 /* MediaDetailViewModel.swift in Sources */,
+				B1873B452C9BC95700C692A7 /* CheckBoxView.swift in Sources */,
 				B13E30F02C8015A0007BD28D /* AddListItemView.swift in Sources */,
 				B13E30FE2C8D2AD0007BD28D /* TaskDetailView.swift in Sources */,
 				B13E31222C910463007BD28D /* TaskItem.swift in Sources */,

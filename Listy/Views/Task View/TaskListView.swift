@@ -5,8 +5,8 @@ struct TaskListView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @ObservedObject var list: CustomList
     @StateObject private var viewModel: DetailListViewModel
+    @State private var showCompletedTasks = false
     @State private var newTaskText = ""
-    @State private var draggedTask: TaskItem?
 
     init(list: CustomList) {
         self.list = list
@@ -15,6 +15,7 @@ struct TaskListView: View {
 
     var body: some View {
         VStack {
+            // Add Task Input
             HStack {
                 TextField("New task", text: $newTaskText)
                 Button(action: addTask) {
@@ -23,21 +24,28 @@ struct TaskListView: View {
             }
             .padding()
 
+            // Task List
             List {
-                ForEach(viewModel.items.compactMap { $0 as? TaskItem }) { task in
-                    TaskRowView(task: task) // Removed viewModel here
-                        .onDrag {
-                            self.draggedTask = task
-                            return NSItemProvider(object: task.wrappedText as NSString)
-                        }
-                        .onDrop(of: [.text], delegate: TaskDropDelegate(task: task, tasks: viewModel.items.compactMap { $0 as? TaskItem }, draggedTask: $draggedTask, viewModel: viewModel))
+                ForEach(viewModel.filteredTasks(showCompleted: showCompletedTasks), id: \.self) { task in
+                    TaskRowView(task: task, onUpdate: {
+                        viewModel.updateTask(task)
+                    })
                 }
+
                 .onDelete(perform: deleteTasks)
                 .onMove(perform: moveTasks)
             }
             .toolbar {
-                EditButton()
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Toggle("Show Completed", isOn: $showCompletedTasks)
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    EditButton()
+                }
             }
+        }
+        .onAppear {
+            viewModel.fetchItems()
         }
     }
 
@@ -54,40 +62,24 @@ struct TaskListView: View {
                 newTaskText = ""
                 viewModel.fetchItems()
             } catch {
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                print("Error adding task: \(error)")
             }
         }
     }
 
-    private func deleteTasks(offsets: IndexSet) {
+    private func deleteTasks(at offsets: IndexSet) {
         withAnimation {
             offsets.map { viewModel.items[$0] }.forEach(viewContext.delete)
-
             do {
                 try viewContext.save()
                 viewModel.fetchItems()
             } catch {
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                print("Error deleting task: \(error)")
             }
         }
     }
 
     private func moveTasks(from source: IndexSet, to destination: Int) {
-        var revisedItems: [TaskItem] = viewModel.items.compactMap { $0 as? TaskItem }
-        revisedItems.move(fromOffsets: source, toOffset: destination)
-
-        for reverseIndex in stride(from: revisedItems.count - 1, through: 0, by: -1) {
-            revisedItems[reverseIndex].order = Int16(reverseIndex)
-        }
-
-        do {
-            try viewContext.save()
-            viewModel.fetchItems()
-        } catch {
-            let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-        }
+        viewModel.moveTasks(from: source, to: destination)
     }
 }

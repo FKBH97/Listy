@@ -9,9 +9,10 @@ struct AddListItemView: View {
 
     @State private var text = ""
     @State private var author = ""
-    @State private var dueDate: Date = Date() // Ensure non-optional binding
-    @State private var dueTime: Date = Date() // Set default time value
+    @State private var dueDate: Date? = nil // Optional dueDate
+    @State private var showDatePicker = false // Toggle for showing DatePicker
     @State private var priority: Int = 0
+    @State private var additionalDetails = ""
     @State private var mediaType = ""
     @State private var fetchedTmdbId: Int64 = 0
     @State private var isSearching = false
@@ -19,31 +20,38 @@ struct AddListItemView: View {
 
     var body: some View {
         Form {
-            // Text input for item
             TextField("Item Text", text: $text)
 
-            // Based on the list type, provide the appropriate fields
             switch list.listType {
             case "quote":
                 TextField("Author", text: $author)
                 
             case "task":
-                // DatePicker for task due date
-                DatePicker("Due Date", selection: $dueDate, displayedComponents: .date)
-                // DatePicker for task time
-                DatePicker("Due Time", selection: $dueTime, displayedComponents: .hourAndMinute)
+                // Toggle to show/hide the DatePicker
+                Toggle("Set Due Date", isOn: $showDatePicker.animation())
                 
-                // Priority picker with default value of 0
+                if showDatePicker {
+                    DatePicker("Due Date", selection: Binding(
+                        get: { dueDate ?? Date() }, // Provide a default date if nil
+                        set: { dueDate = $0 }       // Update the optional dueDate
+                    ), displayedComponents: .date)
+                }
+
                 Picker("Priority", selection: $priority) {
                     Text("None").tag(0)
                     Text("Low").tag(1)
                     Text("Medium").tag(2)
                     Text("High").tag(3)
                 }
-                .pickerStyle(SegmentedPickerStyle()) // Segmented control style
+                .pickerStyle(SegmentedPickerStyle())
+                
+                Section(header: Text("Additional Details")) {
+                    TextEditor(text: $additionalDetails)
+                        .frame(height: 100)
+                        .foregroundColor(.secondary)
+                }
                 
             case "media":
-                // Button to trigger media search
                 Button("Search Media") {
                     isSearching = true
                 }
@@ -52,7 +60,6 @@ struct AddListItemView: View {
                 EmptyView()
             }
 
-            // Save button to trigger save logic
             Button("Save") {
                 saveItem()
             }
@@ -71,7 +78,6 @@ struct AddListItemView: View {
         }
     }
 
-    // Function to save the item based on the type
     private func saveItem() {
         let newItem: ListItem
         
@@ -83,15 +89,9 @@ struct AddListItemView: View {
             
         case "task":
             let taskItem = TaskItem(context: context)
-            // Combine dueDate and dueTime
-            let calendar = Calendar.current
-            taskItem.dueDate = calendar.date(
-                bySettingHour: calendar.component(.hour, from: dueTime),
-                minute: calendar.component(.minute, from: dueTime),
-                second: 0,
-                of: dueDate
-            )
+            taskItem.dueDate = showDatePicker ? dueDate : nil // Set dueDate or leave it nil
             taskItem.priority = Int16(priority)
+            taskItem.additionalDetails = additionalDetails
             newItem = taskItem
             
         case "media":
@@ -107,7 +107,6 @@ struct AddListItemView: View {
         newItem.text = text
         newItem.customList = list
         
-        // Save context
         do {
             try context.save()
             viewModel.fetchItems() // Refresh the list after saving

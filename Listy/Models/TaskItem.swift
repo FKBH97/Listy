@@ -6,7 +6,7 @@ public class TaskItem: ListItem, Identifiable {
     @NSManaged public var dueDate: Date?
     @NSManaged public var isCompleted: Bool
     @NSManaged public var priority: Int16
-    @NSManaged public var details: String?
+    @NSManaged public var additionalDetails: String?
     
     public var id: NSManagedObjectID {
         return objectID

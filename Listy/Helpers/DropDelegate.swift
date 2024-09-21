@@ -11,7 +11,7 @@ struct TaskDropDelegate: DropDelegate {
         guard let fromIndex = tasks.firstIndex(of: draggedTask),
               let toIndex = tasks.firstIndex(of: task) else { return false }
         
-        viewModel.moveTasks(from: fromIndex, to: toIndex)
+        viewModel.moveTasks(from: IndexSet(integer: fromIndex), to: toIndex)
         self.draggedTask = nil
         return true
     }
@@ -22,7 +22,8 @@ struct TaskDropDelegate: DropDelegate {
               let toIndex = tasks.firstIndex(of: task) else { return }
 
         if fromIndex != toIndex {
-            viewModel.moveTasks(from: fromIndex, to: toIndex)
+            viewModel.moveTasks(from: IndexSet(integer: fromIndex), to: toIndex)
         }
     }
 }
+
