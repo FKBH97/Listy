@@ -21,6 +21,39 @@
 		B13E30F02C8015A0007BD28D /* AddListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13E30EF2C8015A0007BD28D /* AddListItemView.swift */; };
 		B13E30F22C8016D6007BD28D /* EditItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13E30F12C8016D6007BD28D /* EditItemView.swift */; };
 		B13E30F42C801A70007BD28D /* AddListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13E30F32C801A70007BD28D /* AddListView.swift */; };
+		B13E30FE2C8D2AD0007BD28D /* TaskDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13E30FD2C8D2ACF007BD28D /* TaskDetailView.swift */; };
+		B13E31002C8D2C17007BD28D /* DetailedQuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13E30FF2C8D2C17007BD28D /* DetailedQuoteView.swift */; };
+		B13E311E2C91042B007BD28D /* QuoteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13E311D2C91042A007BD28D /* QuoteItem.swift */; };
+		B13E31202C91044C007BD28D /* MediaListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13E311F2C91044C007BD28D /* MediaListItem.swift */; };
+		B13E31222C910463007BD28D /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13E31212C910463007BD28D /* TaskItem.swift */; };
+		B13E31242C910D0D007BD28D /* ListCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13E31232C910D0D007BD28D /* ListCategory.swift */; };
+		B1873AFD2C938B3A00C692A7 /* DetailListViewModelError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873AFC2C938B3A00C692A7 /* DetailListViewModelError.swift */; };
+		B1873B022C93A6D500C692A7 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B012C93A6D500C692A7 /* AppError.swift */; };
+		B1873B042C93A70200C692A7 /* EditableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B032C93A70200C692A7 /* EditableItem.swift */; };
+		B1873B062C93A72500C692A7 /* DetailQuoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B052C93A72500C692A7 /* DetailQuoteViewModel.swift */; };
+		B1873B092C93AD6300C692A7 /* TMDbAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B082C93AD6300C692A7 /* TMDbAPIService.swift */; };
+		B1873B0D2C93AD8C00C692A7 /* MediaSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B0C2C93AD8C00C692A7 /* MediaSearchViewModel.swift */; };
+		B1873B112C93B73500C692A7 /* MediaDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B102C93B73500C692A7 /* MediaDetailView.swift */; };
+		B1873B132C93B79700C692A7 /* MediaSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B122C93B79700C692A7 /* MediaSearchView.swift */; };
+		B1873B152C93BC5300C692A7 /* IdentifiableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B142C93BC5300C692A7 /* IdentifiableError.swift */; };
+		B1873B192C9504EE00C692A7 /* MediaSearchResultRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B182C9504EE00C692A7 /* MediaSearchResultRow.swift */; };
+		B1873B1C2C95054200C692A7 /* ManualMediaEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B1B2C95054200C692A7 /* ManualMediaEntryView.swift */; };
+		B1873B1E2C95079D00C692A7 /* MediaSearchModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B1D2C95079D00C692A7 /* MediaSearchModels.swift */; };
+		B1873B202C95086A00C692A7 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B1F2C95086A00C692A7 /* APIError.swift */; };
+		B1873B222C950C6000C692A7 /* TMDbAPIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B212C950C6000C692A7 /* TMDbAPIConfig.swift */; };
+		B1873B242C961CA300C692A7 /* MediaDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B232C961CA300C692A7 /* MediaDetailViewModel.swift */; };
+		B1873B262C9A01C100C692A7 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B252C9A01C100C692A7 /* ErrorView.swift */; };
+		B1873B282C9A01E200C692A7 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B272C9A01E200C692A7 /* Formatters.swift */; };
+		B1873B2A2C9A0A8400C692A7 /* ListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B292C9A0A8400C692A7 /* ListManager.swift */; };
+		B1873B372C9B529C00C692A7 /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B362C9B529C00C692A7 /* TaskListView.swift */; };
+		B1873B392C9B52C700C692A7 /* AddTaskItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B382C9B52C700C692A7 /* AddTaskItemView.swift */; };
+		B1873B3B2C9B52E400C692A7 /* DropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B3A2C9B52E400C692A7 /* DropDelegate.swift */; };
+		B1873B3D2C9B55EF00C692A7 /* TaskRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B3C2C9B55EF00C692A7 /* TaskRowView.swift */; };
+		B1873B3F2C9B5C4D00C692A7 /* TaskListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B3E2C9B5C4D00C692A7 /* TaskListViewModel.swift */; };
+		B1873B412C9B761100C692A7 /* KeyboardApdaptive.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B402C9B761100C692A7 /* KeyboardApdaptive.swift */; };
+		B1873B432C9B7C1A00C692A7 /* TaskEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B422C9B7C1A00C692A7 /* TaskEditView.swift */; };
+		B1873B452C9BC95700C692A7 /* CheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1873B442C9BC95700C692A7 /* CheckBoxView.swift */; };
+		B1D607482C9F5F7D00A48E59 /* ListEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D607472C9F5F7D00A48E59 /* ListEditView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +72,39 @@
 		B13E30EF2C8015A0007BD28D /* AddListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListItemView.swift; sourceTree = "<group>"; };
 		B13E30F12C8016D6007BD28D /* EditItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemView.swift; sourceTree = "<group>"; };
 		B13E30F32C801A70007BD28D /* AddListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListView.swift; sourceTree = "<group>"; };
+		B13E30FD2C8D2ACF007BD28D /* TaskDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailView.swift; sourceTree = "<group>"; };
+		B13E30FF2C8D2C17007BD28D /* DetailedQuoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedQuoteView.swift; sourceTree = "<group>"; };
+		B13E311D2C91042A007BD28D /* QuoteItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteItem.swift; sourceTree = "<group>"; };
+		B13E311F2C91044C007BD28D /* MediaListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaListItem.swift; sourceTree = "<group>"; };
+		B13E31212C910463007BD28D /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
+		B13E31232C910D0D007BD28D /* ListCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCategory.swift; sourceTree = "<group>"; };
+		B1873AFC2C938B3A00C692A7 /* DetailListViewModelError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailListViewModelError.swift; sourceTree = "<group>"; };
+		B1873B012C93A6D500C692A7 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		B1873B032C93A70200C692A7 /* EditableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableItem.swift; sourceTree = "<group>"; };
+		B1873B052C93A72500C692A7 /* DetailQuoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailQuoteViewModel.swift; sourceTree = "<group>"; };
+		B1873B082C93AD6300C692A7 /* TMDbAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDbAPIService.swift; sourceTree = "<group>"; };
+		B1873B0C2C93AD8C00C692A7 /* MediaSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaSearchViewModel.swift; sourceTree = "<group>"; };
+		B1873B102C93B73500C692A7 /* MediaDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaDetailView.swift; sourceTree = "<group>"; };
+		B1873B122C93B79700C692A7 /* MediaSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaSearchView.swift; sourceTree = "<group>"; };
+		B1873B142C93BC5300C692A7 /* IdentifiableError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiableError.swift; sourceTree = "<group>"; };
+		B1873B182C9504EE00C692A7 /* MediaSearchResultRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaSearchResultRow.swift; sourceTree = "<group>"; };
+		B1873B1B2C95054200C692A7 /* ManualMediaEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualMediaEntryView.swift; sourceTree = "<group>"; };
+		B1873B1D2C95079D00C692A7 /* MediaSearchModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaSearchModels.swift; sourceTree = "<group>"; };
+		B1873B1F2C95086A00C692A7 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		B1873B212C950C6000C692A7 /* TMDbAPIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDbAPIConfig.swift; sourceTree = "<group>"; };
+		B1873B232C961CA300C692A7 /* MediaDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaDetailViewModel.swift; sourceTree = "<group>"; };
+		B1873B252C9A01C100C692A7 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		B1873B272C9A01E200C692A7 /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
+		B1873B292C9A0A8400C692A7 /* ListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListManager.swift; sourceTree = "<group>"; };
+		B1873B362C9B529C00C692A7 /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
+		B1873B382C9B52C700C692A7 /* AddTaskItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskItemView.swift; sourceTree = "<group>"; };
+		B1873B3A2C9B52E400C692A7 /* DropDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDelegate.swift; sourceTree = "<group>"; };
+		B1873B3C2C9B55EF00C692A7 /* TaskRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRowView.swift; sourceTree = "<group>"; };
+		B1873B3E2C9B5C4D00C692A7 /* TaskListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewModel.swift; sourceTree = "<group>"; };
+		B1873B402C9B761100C692A7 /* KeyboardApdaptive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardApdaptive.swift; sourceTree = "<group>"; };
+		B1873B422C9B7C1A00C692A7 /* TaskEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskEditView.swift; sourceTree = "<group>"; };
+		B1873B442C9BC95700C692A7 /* CheckBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxView.swift; sourceTree = "<group>"; };
+		B1D607472C9F5F7D00A48E59 /* ListEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEditView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,11 +137,14 @@
 		B13E30C82C80088B007BD28D /* Listy */ = {
 			isa = PBXGroup;
 			children = (
+				B1AE2A782CD30CF600B3AD5C /* Media List */,
+				B1AE2A772CD30CDA00B3AD5C /* Quote LIst */,
+				B1AE2A762CD30CA900B3AD5C /* Task List */,
+				B1873B352C9A180600C692A7 /* Helpers */,
 				B13E30EA2C80155F007BD28D /* Views */,
 				B13E30E52C80151C007BD28D /* ViewModels */,
 				B13E30DE2C8013F2007BD28D /* Models */,
 				B13E30C92C80088B007BD28D /* ListyApp.swift */,
-				B13E30DC2C80123F007BD28D /* PersistanceController.swift */,
 				B13E30CD2C80088C007BD28D /* Assets.xcassets */,
 				B13E30D42C80088C007BD28D /* Listy.xcdatamodeld */,
 				B13E30CF2C80088C007BD28D /* Preview Content */,
@@ -94,8 +163,14 @@
 		B13E30DE2C8013F2007BD28D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				B13E30DF2C80140C007BD28D /* CustomList.swift */,
+				B13E31232C910D0D007BD28D /* ListCategory.swift */,
 				B13E30E12C801423007BD28D /* ListItem.swift */,
+				B13E311D2C91042A007BD28D /* QuoteItem.swift */,
+				B13E30DF2C80140C007BD28D /* CustomList.swift */,
+				B13E311F2C91044C007BD28D /* MediaListItem.swift */,
+				B13E31212C910463007BD28D /* TaskItem.swift */,
+				B1873B032C93A70200C692A7 /* EditableItem.swift */,
+				B1873B1D2C95079D00C692A7 /* MediaSearchModels.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -103,8 +178,7 @@
 		B13E30E52C80151C007BD28D /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				B13E30E62C801530007BD28D /* MainViewModel.swift */,
-				B13E30E82C80154B007BD28D /* DetailListViewModel.swift */,
+				B1873B312C9A178300C692A7 /* List View Models */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -112,13 +186,150 @@
 		B13E30EA2C80155F007BD28D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B13E30EB2C80156C007BD28D /* MainView.swift */,
-				B13E30ED2C801589007BD28D /* DetailListView.swift */,
-				B13E30EF2C8015A0007BD28D /* AddListItemView.swift */,
-				B13E30F12C8016D6007BD28D /* EditItemView.swift */,
-				B13E30F32C801A70007BD28D /* AddListView.swift */,
+				B1873AFE2C93A62700C692A7 /* List Views */,
+				B1873B402C9B761100C692A7 /* KeyboardApdaptive.swift */,
+				B1873B442C9BC95700C692A7 /* CheckBoxView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		B1873AFE2C93A62700C692A7 /* List Views */ = {
+			isa = PBXGroup;
+			children = (
+				B1873B252C9A01C100C692A7 /* ErrorView.swift */,
+				B13E30F32C801A70007BD28D /* AddListView.swift */,
+				B13E30F12C8016D6007BD28D /* EditItemView.swift */,
+				B13E30EF2C8015A0007BD28D /* AddListItemView.swift */,
+				B13E30EB2C80156C007BD28D /* MainView.swift */,
+				B13E30ED2C801589007BD28D /* DetailListView.swift */,
+				B1D607472C9F5F7D00A48E59 /* ListEditView.swift */,
+			);
+			path = "List Views";
+			sourceTree = "<group>";
+		};
+		B1873B002C93A6BC00C692A7 /* Error Handling */ = {
+			isa = PBXGroup;
+			children = (
+				B1873B012C93A6D500C692A7 /* AppError.swift */,
+				B1873B142C93BC5300C692A7 /* IdentifiableError.swift */,
+				B1873B1F2C95086A00C692A7 /* APIError.swift */,
+			);
+			path = "Error Handling";
+			sourceTree = "<group>";
+		};
+		B1873B072C93AD3600C692A7 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				B1873B082C93AD6300C692A7 /* TMDbAPIService.swift */,
+				B1873B182C9504EE00C692A7 /* MediaSearchResultRow.swift */,
+				B1873B212C950C6000C692A7 /* TMDbAPIConfig.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		B1873B1A2C95050300C692A7 /* Media View */ = {
+			isa = PBXGroup;
+			children = (
+				B1873B102C93B73500C692A7 /* MediaDetailView.swift */,
+				B1873B122C93B79700C692A7 /* MediaSearchView.swift */,
+				B1873B1B2C95054200C692A7 /* ManualMediaEntryView.swift */,
+			);
+			path = "Media View";
+			sourceTree = "<group>";
+		};
+		B1873B2B2C9A171200C692A7 /* Quote View */ = {
+			isa = PBXGroup;
+			children = (
+				B13E30FF2C8D2C17007BD28D /* DetailedQuoteView.swift */,
+			);
+			path = "Quote View";
+			sourceTree = "<group>";
+		};
+		B1873B2C2C9A172E00C692A7 /* Task View */ = {
+			isa = PBXGroup;
+			children = (
+				B13E30FD2C8D2ACF007BD28D /* TaskDetailView.swift */,
+				B1873B362C9B529C00C692A7 /* TaskListView.swift */,
+				B1873B382C9B52C700C692A7 /* AddTaskItemView.swift */,
+				B1873B3C2C9B55EF00C692A7 /* TaskRowView.swift */,
+				B1873B422C9B7C1A00C692A7 /* TaskEditView.swift */,
+			);
+			path = "Task View";
+			sourceTree = "<group>";
+		};
+		B1873B312C9A178300C692A7 /* List View Models */ = {
+			isa = PBXGroup;
+			children = (
+				B1873AFC2C938B3A00C692A7 /* DetailListViewModelError.swift */,
+				B13E30E82C80154B007BD28D /* DetailListViewModel.swift */,
+				B13E30E62C801530007BD28D /* MainViewModel.swift */,
+			);
+			path = "List View Models";
+			sourceTree = "<group>";
+		};
+		B1873B322C9A179900C692A7 /* Quote View Models */ = {
+			isa = PBXGroup;
+			children = (
+				B1873B052C93A72500C692A7 /* DetailQuoteViewModel.swift */,
+			);
+			path = "Quote View Models";
+			sourceTree = "<group>";
+		};
+		B1873B332C9A17A300C692A7 /* Media View Models */ = {
+			isa = PBXGroup;
+			children = (
+				B1873B232C961CA300C692A7 /* MediaDetailViewModel.swift */,
+				B1873B0C2C93AD8C00C692A7 /* MediaSearchViewModel.swift */,
+			);
+			path = "Media View Models";
+			sourceTree = "<group>";
+		};
+		B1873B342C9A17AF00C692A7 /* Task View Models */ = {
+			isa = PBXGroup;
+			children = (
+				B1873B3E2C9B5C4D00C692A7 /* TaskListViewModel.swift */,
+			);
+			path = "Task View Models";
+			sourceTree = "<group>";
+		};
+		B1873B352C9A180600C692A7 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B1873B002C93A6BC00C692A7 /* Error Handling */,
+				B1873B072C93AD3600C692A7 /* Networking */,
+				B13E30DC2C80123F007BD28D /* PersistanceController.swift */,
+				B1873B272C9A01E200C692A7 /* Formatters.swift */,
+				B1873B292C9A0A8400C692A7 /* ListManager.swift */,
+				B1873B3A2C9B52E400C692A7 /* DropDelegate.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		B1AE2A762CD30CA900B3AD5C /* Task List */ = {
+			isa = PBXGroup;
+			children = (
+				B1873B2C2C9A172E00C692A7 /* Task View */,
+				B1873B342C9A17AF00C692A7 /* Task View Models */,
+			);
+			path = "Task List";
+			sourceTree = "<group>";
+		};
+		B1AE2A772CD30CDA00B3AD5C /* Quote LIst */ = {
+			isa = PBXGroup;
+			children = (
+				B1873B322C9A179900C692A7 /* Quote View Models */,
+				B1873B2B2C9A171200C692A7 /* Quote View */,
+			);
+			path = "Quote LIst";
+			sourceTree = "<group>";
+		};
+		B1AE2A782CD30CF600B3AD5C /* Media List */ = {
+			isa = PBXGroup;
+			children = (
+				B1873B332C9A17A300C692A7 /* Media View Models */,
+				B1873B1A2C95050300C692A7 /* Media View */,
+			);
+			path = "Media List";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,17 +403,50 @@
 			buildActionMask = 2147483647;
 			files = (
 				B13E30E72C801530007BD28D /* MainViewModel.swift in Sources */,
+				B1873B132C93B79700C692A7 /* MediaSearchView.swift in Sources */,
+				B1873B1E2C95079D00C692A7 /* MediaSearchModels.swift in Sources */,
+				B13E311E2C91042B007BD28D /* QuoteItem.swift in Sources */,
+				B1873B372C9B529C00C692A7 /* TaskListView.swift in Sources */,
+				B1873AFD2C938B3A00C692A7 /* DetailListViewModelError.swift in Sources */,
+				B1873B392C9B52C700C692A7 /* AddTaskItemView.swift in Sources */,
 				B13E30EC2C80156C007BD28D /* MainView.swift in Sources */,
+				B13E31002C8D2C17007BD28D /* DetailedQuoteView.swift in Sources */,
+				B1873B432C9B7C1A00C692A7 /* TaskEditView.swift in Sources */,
+				B1873B2A2C9A0A8400C692A7 /* ListManager.swift in Sources */,
+				B1873B3D2C9B55EF00C692A7 /* TaskRowView.swift in Sources */,
 				B13E30F42C801A70007BD28D /* AddListView.swift in Sources */,
+				B1873B112C93B73500C692A7 /* MediaDetailView.swift in Sources */,
 				B13E30E22C801423007BD28D /* ListItem.swift in Sources */,
+				B1873B3B2C9B52E400C692A7 /* DropDelegate.swift in Sources */,
+				B1873B412C9B761100C692A7 /* KeyboardApdaptive.swift in Sources */,
+				B13E31242C910D0D007BD28D /* ListCategory.swift in Sources */,
+				B1873B042C93A70200C692A7 /* EditableItem.swift in Sources */,
+				B1873B0D2C93AD8C00C692A7 /* MediaSearchViewModel.swift in Sources */,
+				B1873B282C9A01E200C692A7 /* Formatters.swift in Sources */,
+				B1873B202C95086A00C692A7 /* APIError.swift in Sources */,
+				B1873B092C93AD6300C692A7 /* TMDbAPIService.swift in Sources */,
 				B13E30CA2C80088B007BD28D /* ListyApp.swift in Sources */,
+				B1D607482C9F5F7D00A48E59 /* ListEditView.swift in Sources */,
 				B13E30F22C8016D6007BD28D /* EditItemView.swift in Sources */,
+				B13E31202C91044C007BD28D /* MediaListItem.swift in Sources */,
+				B1873B152C93BC5300C692A7 /* IdentifiableError.swift in Sources */,
 				B13E30EE2C801589007BD28D /* DetailListView.swift in Sources */,
+				B1873B3F2C9B5C4D00C692A7 /* TaskListViewModel.swift in Sources */,
+				B1873B192C9504EE00C692A7 /* MediaSearchResultRow.swift in Sources */,
+				B1873B262C9A01C100C692A7 /* ErrorView.swift in Sources */,
+				B1873B222C950C6000C692A7 /* TMDbAPIConfig.swift in Sources */,
 				B13E30D62C80088C007BD28D /* Listy.xcdatamodeld in Sources */,
+				B1873B062C93A72500C692A7 /* DetailQuoteViewModel.swift in Sources */,
 				B13E30E02C80140C007BD28D /* CustomList.swift in Sources */,
 				B13E30DD2C80123F007BD28D /* PersistanceController.swift in Sources */,
+				B1873B1C2C95054200C692A7 /* ManualMediaEntryView.swift in Sources */,
 				B13E30E92C80154B007BD28D /* DetailListViewModel.swift in Sources */,
+				B1873B242C961CA300C692A7 /* MediaDetailViewModel.swift in Sources */,
+				B1873B452C9BC95700C692A7 /* CheckBoxView.swift in Sources */,
 				B13E30F02C8015A0007BD28D /* AddListItemView.swift in Sources */,
+				B13E30FE2C8D2AD0007BD28D /* TaskDetailView.swift in Sources */,
+				B13E31222C910463007BD28D /* TaskItem.swift in Sources */,
+				B1873B022C93A6D500C692A7 /* AppError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
